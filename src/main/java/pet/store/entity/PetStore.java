@@ -64,6 +64,12 @@ import jakarta.persistence.JoinColumn;
 		@ToString.Exclude
 		@EqualsAndHashCode.Exclude
 		private Set<Employee> employees;
+
+
+		public void setName(String name) {
+			// TODO Auto-generated method stub
+			
+		}
 		
 		
 		}

@@ -37,6 +37,26 @@ package pet.store.entity;
 		@ManyToOne(cascade = CascadeType.ALL)
 		@JoinColumn(name = "pet_store_id")
 		private PetStore petStore;
+
+		public void setName(Object name) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void setAge(Object age) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public Object getId() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		public Object getName() {
+			// TODO Auto-generated method stub
+			return null;
+		}
 		
 		
 	}

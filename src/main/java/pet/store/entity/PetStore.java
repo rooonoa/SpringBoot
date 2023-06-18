@@ -66,9 +66,11 @@ import jakarta.persistence.JoinColumn;
 		private Set<Employee> employees;
 
 
-		public void setName(String name) {
+
+
+		public Object getId() {
 			// TODO Auto-generated method stub
-			
+			return null;
 		}
 		
 		

@@ -1,72 +1,152 @@
 package pet.store.controller.model;
 
-import java.util.List;
+import java.util.HashSet;
 
-import jakarta.persistence.Column;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import java.util.Set;
+
 import lombok.Data;
+
 import lombok.NoArgsConstructor;
+
+import pet.store.entity.Customer;
+
+import pet.store.entity.Employee;
+
 import pet.store.entity.PetStore;
 
 @Data
+
 @NoArgsConstructor
 
 public class PetStoreData {
 
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long petStoreId;
 	
-	
-	@Column(name = "petstore_name")
 	private String petStoreName;
+	
 	private String petStoreAddress;
+	
 	private String petStoreCity;
+	
 	private String petStoreState;
+	
 	private String petStoreZip;
+	
 	private String petStorePhone;
 	
-	/*
-	 * changing the data type of the customers field to PetStoreCustomer and the employees
-	 * field to PetStoreEmployee
-	 */
-	private List<PetStoreCustomer> customers;
-	private List<PetStoreEmployee> employees;
+	private Set<PetStoreCustomer> customers = new HashSet<>();
 	
-	 /*
-	  * Adding a constructor that takes a PetStore as the parameter and then setting all matching 
-	  * fields in the PetStoreData class to the data in the PetStoreClass
-	  */
+	private Set<PetStoreEmployee> employees = new HashSet<>();
+
+
+
+
+public PetStoreData(PetStore petStore) {
+
+	this.petStoreId = petStore.getPetStoreId();
+	
+	this.petStoreName = petStore.getPetStoreName();
+	
+	this.petStoreAddress = petStore.getPetStoreAddress();
+	
+	this.petStoreCity = petStore.getPetStoreCity();
+	
+	this.petStoreState = petStore.getPetStoreState();
+	
+	this.petStoreZip = petStore.getPetStoreZip();
+	
+	this.petStorePhone = petStore.getPetStorePhone();
+
+// Set customers
+
+for (Customer customer : petStore.getCustomers()) {
+
+PetStoreCustomer petStoreCustomer = new PetStoreCustomer(customer);
+
+customers.add(petStoreCustomer);
+
+}
+
+// Set employees
+
+	for (Employee employee : petStore.getEmployees()) {
+	
+	PetStoreEmployee petStoreEmployee = new PetStoreEmployee(employee);
+	
+	employees.add(petStoreEmployee);
+
+}
+
+}
+
+@Data //class level annotations
+
+@NoArgsConstructor
+
+public static class PetStoreCustomer {
+	
+	//setting class constants 
+	
+	private Long customerId;
+	
+	private String customerFirstName;
+	
+	private String customerLastName;
+	
+	private String customerEmail;
 	
 	
-	public PetStoreData (PetStore petStore) {
-		
-		this.petStoreId = petStore.getPetStoreId();
-		this.petStoreName = petStore.getPetStoreName();
-		this.petStoreAddress = petStore.getPetStoreAddress();
-		this.petStoreCity = petStore.getPetStoreCity();
-		this.petStoreState = petStore.getPetStoreState();
-		this.petStoreZip = petStore.getPetStoreZip();
-		this.petStorePhone = petStore.getPetStorePhone();
-		
+	// creating the method PetStoreCustomer
+public PetStoreCustomer(Customer customer) {
 	
-		
-		
+	this.customerId = customer.getCustomerId();
+	
+	this.customerFirstName = customer.getCustomerFirstName();
+	
+	this.customerLastName = customer.getCustomerLastName();
+	
+	this.customerEmail = customer.getCustomerEmail();
+	
+	}
+	
 	}
 
+@Data //Class level annotations 
 
-	 public String getName() {
-	        return petStoreName;
-	    }
-	 public String getLocation() {
-	        return petStoreCity + ", " + petStoreState + " " + petStoreZip;
-	    }
+@NoArgsConstructor
+
+//creating class constants 
+
+public static class PetStoreEmployee {
+		
+	private Long employeeId;
+		
+	private String employeeFirstName;
+		
+	private String employeeLastName;
+		
+	private String employeePhone;
+		
+	private String employeeJobTitle;
 	
 	
-	}
-
-
+	//Creating PetStoreEmployee method 
+		
+public PetStoreEmployee(Employee employee) {
+		
+		this.employeeId = employee.getEmployeeId();
+		
+		this.employeeFirstName = employee.getEmployeeFirstName();
+		
+		this.employeeLastName = employee.getEmployeeLastName();
+		
+		this.employeePhone = employee.getEmployeePhone();
+		
+		this.employeeJobTitle = employee.getEmployeeJobTitle();
+		
+		}
+		
+		}
+		
+		}

@@ -2,6 +2,7 @@
 	
 	
 	import java.util.Set;
+
 	import jakarta.persistence.CascadeType;
 	import jakarta.persistence.Column;
 	import jakarta.persistence.Entity;
@@ -51,7 +52,18 @@
 		@ToString.Exclude
 		@EqualsAndHashCode.Exclude
 		private Set<PetStore> petStores;
-		
-		
+
+
+		public void setPetStore(PetStore petStore) {
+			// TODO Auto-generated method stub
+			
 		}
+
+
+		
+			
+		}
+		
+		
+		
 	
